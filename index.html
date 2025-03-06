@@ -201,9 +201,13 @@
             margin-bottom: 30px;
         }
 
-        .subtitle {
+        .subtitle, #faq-sub{
             font-size: 0.9em; 
             color: grey; 
+        }
+
+        #faq-sub {
+            margin-top: 5px; 
         }
 
         #join-title {
@@ -245,6 +249,52 @@
                 gap: 1rem;
             }
         }
+
+        /* FAQs Section Styles */
+        .faqs {
+            padding: 4rem 5%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+            margin: 4rem 0;
+        }
+
+        .faq {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .faq:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+        }
+
+        .faqs h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #00f3ff;
+        }
+
+        .faq h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq p {
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            line-height: 1.5;
+        }
     </style>
 </head>
 
@@ -283,6 +333,23 @@
             <h3>Gameplay</h3>
             <p>All positions are relative to the ball's position. When attacking, the goalkeeper pushes forward with the
                 playmaker.</p>
+        </div>
+    </section>
+
+    <section class="faqs">
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+            <h3>How do I join the team?</h3>
+            <p>Simply sign up below, join the discord, and keep an eye out for practices or tryouts</p>
+        </div>
+        <div class="faq">
+            <h3>What are the requirments to play?</h3>
+            <p>12+ (Exceptions), decent availibility, and to strive for perfection and teamwork</p>
+        </div>
+        <div class="faq">
+            <h3>How do I become a star captian?</h3>
+            <p>To become a star captian, you must be 14+, a good player, a better leader, and a respectful individual</p>
+            <p class="subtitle" id="faq-sub"><small>The actual process is TBD, the team is simply to young for this process to be determined</small></p>
         </div>
     </section>
 
