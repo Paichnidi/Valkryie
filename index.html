@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valkryie Recruitment</title>
+    <title>Valkyrie Recruitment</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
         rel="stylesheet">
-
-        <link 
-        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap" 
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <style>
         * {
@@ -25,32 +22,36 @@
             font-family: 'Roboto', sans-serif;
             background-color: #0a0a1a;
             color: #ffffff;
+            line-height: 1.6;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 243, 255, 0.1);
         }
 
         .logo {
             color: #00f3ff;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
         }
 
         .hamburger {
             display: none;
             font-size: 2rem;
             cursor: pointer;
+            color: #00f3ff;
         }
 
         .nav-links {
@@ -59,18 +60,23 @@
         }
 
         .nav-links li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
         }
 
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00f3ff;
         }
 
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('./images/drift.jpg') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./images/drift.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -81,12 +87,19 @@
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 4rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 4px;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
         }
 
-        /* Add this new style rule */
+        .hero p {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
         .hero button {
             background: linear-gradient(45deg, #00f3ff, #0066ff);
             color: #0a0a1a;
@@ -100,44 +113,89 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
-            margin-top: 2rem;
         }
 
         .hero button:hover {
             background: linear-gradient(45deg, #0066ff, #00f3ff);
-            color: #00f3ff;
-            box-shadow: 0 0 35px rgba(0, 243, 255, 0.5);
-            transform: translateY(-2px);
+            color: #ffffff;
+            box-shadow: 0 0 35px rgba(0, 243, 255, 0.6);
+            transform: translateY(-3px);
         }
 
         .roles-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 4rem 5%;
+            gap: 2.5rem;
+            padding: 5rem 5%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(10, 10, 26, 1));
         }
 
         .role-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 243, 255, 0.05));
+            padding: 2.5rem;
             border-radius: 15px;
-            transition: transform 0.3s ease;
-            border: 1px solid #00f3ff;
+            border: 1px solid rgba(0, 243, 255, 0.4);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .role-card:hover::before {
+            opacity: 1;
         }
 
         .role-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.4);
+            border-color: #00f3ff;
+        }
+
+        .role-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #00f3ff;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .role-card p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
         }
 
         .signup-section {
             max-width: 600px;
-            margin: 4rem auto;
-            padding: 2rem;
+            margin: 5rem auto;
+            padding: 3rem;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.15);
+            text-align: center;
+        }
+
+        .signup-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #00f3ff;
+            margin-bottom: 2rem;
         }
 
         .form-group {
@@ -147,8 +205,8 @@
         input,
         select {
             width: 100%;
-            padding: 0.8rem;
-            background: rgba(0, 0, 0, 0.3);
+            padding: 0.9rem;
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid #00f3ff;
             color: #ffffff;
             border-radius: 5px;
@@ -159,8 +217,8 @@
         input:focus,
         select:focus {
             outline: none;
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-            background: rgba(0, 243, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            background: rgba(0, 243, 255, 0.1);
         }
 
         input::placeholder {
@@ -174,7 +232,7 @@
 
         button[type="submit"] {
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             background: linear-gradient(45deg, #00f3ff, #0066ff);
             color: #0a0a1a;
             padding: 1rem 2rem;
@@ -186,29 +244,29 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
         }
 
         button[type="submit"]:hover {
             background: linear-gradient(45deg, #0066ff, #00f3ff);
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         #paragraph {
             font-family: "Exo 2", sans-serif;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
 
-        .subtitle, #faq-sub{
-            font-size: 0.9em; 
-            color: grey; 
+        .subtitle,
+        #faq-sub {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         #faq-sub {
-            margin-top: 5px; 
-        }
-
-        #join-title {
-            margin-bottom: 20px; 
+            margin-top: 0.5rem;
         }
 
         .form-message {
@@ -221,16 +279,19 @@
             bottom: 20px;
             right: 20px;
             width: 300px;
+            font-family: 'Roboto', sans-serif;
         }
 
         .success {
-            background: rgba(0, 255, 0, 0.1);
+            background: rgba(0, 255, 0, 0.15);
             border: 1px solid #00ff00;
+            color: #ffffff;
         }
 
         .error {
-            background: rgba(255, 0, 0, 0.1);
+            background: rgba(255, 0, 0, 0.15);
             border: 1px solid #ff0000;
+            color: #ffffff;
         }
 
         @media (max-width: 780px) {
@@ -238,20 +299,24 @@
                 font-size: 2.5rem;
             }
 
+            .hero p {
+                font-size: 1rem;
+            }
+
             .roles-container {
                 grid-template-columns: 1fr;
+                padding: 3rem 5%;
             }
 
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 70px;
                 left: 0;
                 right: 0;
-                background: rgba(0, 0, 0, 0.9);
-                padding: 1rem 0;
-                margin: 0;
+                background: rgba(0, 0, 0, 0.95);
+                padding: 1.5rem 0;
             }
 
             .nav-links.active {
@@ -263,23 +328,22 @@
             }
         }
 
-        /* FAQs Section Styles */
         .faqs {
-            padding: 4rem 5%;
+            padding: 5rem 5%;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
-            margin: 4rem 0;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.15);
+            margin: 5rem 0;
         }
 
         .faq {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
             border: 1px solid rgba(0, 243, 255, 0.2);
             border-radius: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
             text-align: center;
         }
 
@@ -290,22 +354,23 @@
 
         .faqs h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
             text-align: center;
             color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
         }
 
         .faq h3 {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             color: #ffffff;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .faq p {
             font-family: 'Roboto', sans-serif;
-            color: #ffffff;
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.5;
         }
     </style>
@@ -314,7 +379,7 @@
 <body>
     <nav class="navbar">
         <div class="logo">Orion Drift</div>
-        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li><a href="discord.html">Discord</a></li>
             <li><a href="members.html">Members</a></li>
@@ -325,50 +390,53 @@
     <section class="hero">
         <div>
             <h1>Defy Gravity, Rule the Field</h1>
-            <p id="paragraph">Join the ultimate VR sports revolution in zero-gravity arenas</p>
-            <button class="button" onclick="document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })">Join Now</button>
+            <p id="paragraph">Step into the ultimate VR sports revolution—master zero-gravity arenas and become a
+                legend.</p>
+            <button class="button"
+                onclick="document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })">Join Now</button>
         </div>
     </section>
 
     <section class="roles-container">
         <div class="role-card">
             <h3>Striker</h3>
-            <p>Agile scorers mastering zero-G acrobatics to outmaneuver opponents and score spectacular goals.</p>
+            <p>Agile virtuosos who dominate zero-G with acrobatic flair, outsmarting foes to land breathtaking goals.
+            </p>
         </div>
         <div class="role-card">
             <h3>Playmaker</h3>
-            <p>Strategic guardians using tactical positioning and precise timing to protect the goal zone.</p>
+            <p>Tactical maestros orchestrating the field, using precision and foresight to control the cosmic flow.</p>
         </div>
         <div class="role-card">
             <h3>Goalkeeper</h3>
-            <p>Last line of defense with lightning reflexes to make impossible saves in the cosmic arena.</p>
+            <p>Unyielding sentinels with razor-sharp reflexes, thwarting shots in the vastness of the zero-G arena.</p>
         </div>
         <div class="role-card">
             <h3>Gameplay</h3>
-            <p>All positions are relative to the ball's position. When attacking, the goalkeeper pushes forward with the
-                playmaker.</p>
+            <p>Roles shift with the ball’s dance—goalkeepers surge forward with playmakers when the tide turns to
+                attack.</p>
         </div>
     </section>
 
     <section class="faqs">
-        <h2>Frequently asked questions</h2>
+        <h2>Frequently Asked Questions</h2>
         <div class="faq">
             <h3>How do I join the team?</h3>
-            <p>Simply sign up below, join the discord, and keep an eye out for practices or tryouts</p>
+            <p>Sign up below, hop into our Discord, and watch for practice or tryout announcements!</p>
         </div>
         <div class="faq">
-            <h3>What are the requirments to play?</h3>
-            <p>12+ (Exceptions), decent availibility, and to strive for perfection and teamwork</p>
+            <h3>What’s required to play?</h3>
+            <p>Ages 12+ (exceptions considered), solid availability, and a passion for teamwork and excellence.</p>
         </div>
         <div class="faq">
-            <h3>How do I become a star captian?</h3>
-            <p>To become a star captian, you must be 14+, a good player, a better leader, and a respectful individual</p>
-            <p class="subtitle" id="faq-sub"><small>The actual process is TBD, the team is simply to young for this process to be determined</small></p>
+            <h3>How do I become a Star Captain?</h3>
+            <p>Be 14+, excel as a player and leader, and embody respect—details TBD as our team grows!</p>
+            <p class="subtitle" id="faq-sub"><small>Process still in development due to our young team.</small></p>
         </div>
     </section>
 
     <section id="signup" class="signup-section">
-        <h2 id="join-title">Join the Cosmic League</h2>
+        <h2>Join the Cosmic League</h2>
         <form id="signupForm" action="https://formspree.io/f/mrbenwjj" method="POST">
             <div class="form-group">
                 <input type="text" name="fullname" placeholder="Full Name" required>
@@ -380,7 +448,7 @@
                 <select name="role" required>
                     <option value="">Preferred Role</option>
                     <option>Striker</option>
-                    <option>Defender</option>
+                    <option>Playmaker</option>
                     <option>Goalkeeper</option>
                 </select>
             </div>
@@ -392,8 +460,8 @@
                     <option>Advanced</option>
                 </select>
             </div>
-            <div class="join-discord"> 
-                <p class="subtitle"><small>Make sure to join the discord!</small></p>
+            <div class="join-discord">
+                <p class="subtitle"><small>Don’t forget to join our Discord community!</small></p>
             </div>
             <button type="submit">Launch Your Career</button>
         </form>
@@ -417,7 +485,7 @@
 
                 if (response.ok) {
                     form.reset();
-                    message.textContent = "Success! We'll reach out to you as soon as schedules become available. Be sure to keep an eye on your email.";
+                    message.textContent = "Success! Check your email for updates and join our Discord!";
                     message.className = "form-message success";
                     message.style.display = "block";
                     setTimeout(() => message.style.display = "none", 5000);
@@ -425,7 +493,7 @@
                     throw new Error('Form submission failed');
                 }
             } catch (error) {
-                message.textContent = "Error submitting form. Please try again.";
+                message.textContent = "Oops! Something went wrong—try again.";
                 message.className = "form-message error";
                 message.style.display = "block";
                 setTimeout(() => message.style.display = "none", 5000);
